@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+    <style> /* 2nd way to manipulate styles ..css */
+        .highlight{
+            color: white;
+            background-color: black;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <script>
+        const link = document.querySelector("a"); //select element and store reference to it inside a variable 
+        link.textContent = "Mozilla Developer Network"
+        link.href = "https://developer.mozilla.org";
+
+        const sect = document.querySelector("section"); //grab reference to section 
+        const para = document.createElement("p"); //create new paragraph and give text 
+        para.textContent = "We hope you enjoy the ride.";
+        sect.appendChild(para); //append new paragraph at the end of section using Node.appendChild()
+        const text = document.createTextNode(   //add a text node to the paragraph the link sits inside
+            "-premier source for web development knowledge.",
+        );
+        const linkPara = document.querySelector("p");
+        linkPara.appendChild(text);
+
+        //htmlElement.style -- adding inline styles directly into element. Auto-added to html
+        //para.style.color = "white";
+        //para.style.backgroundColor = "black";
+        //para.style.padding = "10px";
+        //para.style.width = "250px";
+        //para.style.textAlign = "center";
+
+        para.setAttribute("class","highlight") //**attribute you want to set on the element, and the value you want to set it to. 
+        //class that is selected by our CSS rule, not as inline CSS styles.
+      </script>
+  </body>
+</html>
+
+<!--
+    move: sect.appendChild(linkPara);
+    remove referenced node: sect.removeChild(linkPara) -- Node.removeChild()
+    remove parent node: linkPara.remove() -- Element.remove
+
+    
+
+-->
